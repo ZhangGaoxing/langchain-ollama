@@ -11,7 +11,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.messages import AIMessage, HumanMessage
 
 llm = OllamaLLM(model="qwen2.5:7b")
-embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+embeddings = OllamaEmbeddings(model="nomic-embed-text")
 db = Chroma(embedding_function=embeddings, persist_directory='./embeddings')
 retriever = db.as_retriever()
 

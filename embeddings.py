@@ -30,5 +30,5 @@ documents = JSONLoader(file_path=f'{documents_path}/articles.jsonl', jq_schema='
 #         "",
 #     ], chunk_size=1000, chunk_overlap=20, add_start_index=True)
 # split_docs = text_splitter.split_documents(documents)
-embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+embeddings = OllamaEmbeddings(model="nomic-embed-text")
 db = Chroma.from_documents(documents, embeddings, persist_directory=embeddings_path)
