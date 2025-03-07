@@ -11,6 +11,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
     metadata["title"] = record.get("title")
     metadata["author"] = record.get("author")
     metadata["date"] = record.get("date")
+    metadata["source"] = record.get("url")
     return metadata
 
 documents = JSONLoader(file_path=f'{documents_path}/articles.jsonl', jq_schema='.', content_key='content', metadata_func=metadata_func, json_lines=True).load()
