@@ -1,18 +1,19 @@
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
 from langchain_ollama.embeddings import OllamaEmbeddings
 from langchain_chroma import Chroma
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough
 
-model = OllamaLLM(model="qwen2.5:7b")
+model = OllamaLLM(model="qwen2.5:0.5b")
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
 db = Chroma(embedding_function=embeddings, persist_directory='./embeddings')
-retriever=db.as_retriever()
+retriever=db.as_retriever(search_kwargs={"k": 3})
 
-template = """你是徐州工业职业技术学院的专业助手，能够根据知识库中的新闻稿，尽可能简洁的回答问题。
+template = """你是徐州工业职业技术学院的专业助手，能够根据知识库中的新闻稿回答问题：
 {context}
-问题: {question}
+问题：{question}
+回答应简洁且准确，避免编造信息。
 """
 prompt = ChatPromptTemplate.from_template(template)
 

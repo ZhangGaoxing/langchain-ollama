@@ -4,6 +4,10 @@ langchain-chroma
 langchain-community
 langgraph
 unstructured
+jq
 chromadb
 fastapi
 uvicorn
+psycopg[binary,pool]
+langgraph-checkpoint-postgres
+tavily-python
