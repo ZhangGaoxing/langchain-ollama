@@ -13,7 +13,7 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langgraph.graph import START, END, StateGraph
 from langgraph.checkpoint.memory import MemorySaver
 
-os.environ['TAVILY_API_KEY'] = "tvly-dev-xxx"
+os.environ['TAVILY_API_KEY'] = "tvly-dev-xx"
 
 llm = ChatOllama(model="qwen2.5:1.5b")
 embeddings = OllamaEmbeddings(model="nomic-embed-text")
